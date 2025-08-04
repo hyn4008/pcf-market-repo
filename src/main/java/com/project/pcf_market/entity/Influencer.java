@@ -1,10 +1,12 @@
 package com.project.pcf_market.entity;
 
+import com.project.pcf_market.domain.Field;
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.List;
 
 @Entity
-@Table(name = "influencer", schema = "influencer")
+@Table(name = "influencer", schema = "customer")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,7 +23,7 @@ public class Influencer {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "field", nullable = false)
-    private FieldType field;
+    private Field field;
 
     private String introduction;
 
@@ -39,4 +41,10 @@ public class Influencer {
     private String blog;
 
     private String email;
+
+    @OneToMany(mappedBy = "influencer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Achievement> achievementList;
+
+    @OneToMany(mappedBy = "influencer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Product> productList;
 }
