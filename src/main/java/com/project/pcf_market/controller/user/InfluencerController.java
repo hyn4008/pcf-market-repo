@@ -1,8 +1,8 @@
-package com.project.pcf_market.controller;
+package com.project.pcf_market.controller.user;
 
-import com.project.pcf_market.dto.influencer.InfluencerDetailDTO;
-import com.project.pcf_market.dto.influencer.InfluencerListDTO;
-import com.project.pcf_market.service.InfluencerService;
+import com.project.pcf_market.dto.user.influencer.InfluencerDetailDTO;
+import com.project.pcf_market.dto.user.influencer.InfluencerListDTO;
+import com.project.pcf_market.service.user.InfluencerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.project.pcf_market.dto.achievement;
+package com.project.pcf_market.dto.user.achievement;
 
 import lombok.*;
 import java.time.LocalDateTime;

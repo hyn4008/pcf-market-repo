@@ -1,20 +1,21 @@
-package com.project.pcf_market.service;
+package com.project.pcf_market.service.user;
 
-import com.project.pcf_market.dto.influencer.InfluencerListDTO;
+import com.project.pcf_market.dto.user.influencer.InfluencerListDTO;
 import com.project.pcf_market.entity.Product;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.project.pcf_market.entity.Influencer;
 import com.project.pcf_market.repository.InfluencerRepository;
 import com.project.pcf_market.repository.InfluencerProductRepository;
-import com.project.pcf_market.dto.achievement.AchievementDTO;
-import com.project.pcf_market.dto.influencer.InfluencerDetailDTO;
-import com.project.pcf_market.dto.product.ProductDTO;
+import com.project.pcf_market.dto.user.achievement.AchievementDTO;
+import com.project.pcf_market.dto.user.influencer.InfluencerDetailDTO;
+import com.project.pcf_market.dto.user.product.ProductDTO;
 import com.project.pcf_market.exception.NotFoundException;
 import java.util.List;
 
 @Service
 public class InfluencerService {
+
     @Autowired
     InfluencerRepository influencerRepository;
 

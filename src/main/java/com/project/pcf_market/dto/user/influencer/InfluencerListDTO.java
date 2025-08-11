@@ -1,4 +1,4 @@
-package com.project.pcf_market.dto.influencer;
+package com.project.pcf_market.dto.user.influencer;
 
 import lombok.*;
 

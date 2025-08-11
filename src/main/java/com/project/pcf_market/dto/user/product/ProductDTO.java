@@ -1,4 +1,4 @@
-package com.project.pcf_market.dto.product;
+package com.project.pcf_market.dto.user.product;
 
 import com.project.pcf_market.domain.Category;
 import lombok.*;

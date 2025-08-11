@@ -1,8 +1,8 @@
-package com.project.pcf_market.dto.influencer;
+package com.project.pcf_market.dto.user.influencer;
 
 import com.project.pcf_market.domain.Field;
-import com.project.pcf_market.dto.achievement.AchievementDTO;
-import com.project.pcf_market.dto.product.ProductDTO;
+import com.project.pcf_market.dto.user.achievement.AchievementDTO;
+import com.project.pcf_market.dto.user.product.ProductDTO;
 import lombok.*;
 import java.util.List;
 
