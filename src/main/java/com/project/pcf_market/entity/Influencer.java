@@ -46,5 +46,5 @@ public class Influencer {
     private List<Achievement> achievementList;
 
     @OneToMany(mappedBy = "influencer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Product> productList;
+    private List<InfluencerProduct> relationList;
 }

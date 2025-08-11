@@ -4,6 +4,7 @@ import com.project.pcf_market.domain.Category;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "product", schema = "customer")
@@ -17,10 +18,6 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "influencer_id", nullable = false)
-    private Influencer influencer;
 
     @Column(nullable = false)
     private String name;
@@ -41,4 +38,10 @@ public class Product {
     private BigDecimal currentPrice;
 
     private BigDecimal rating;
+
+    @Column(name = "purchase_url", nullable = false)
+    private String purchaseUrl;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<InfluencerProduct> relationList;
 }

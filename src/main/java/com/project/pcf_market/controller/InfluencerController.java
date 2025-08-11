@@ -20,6 +20,7 @@ public class InfluencerController {
         return influencerService.getInfluencerList();
     }
 
+    // 개별 인플루언서 조회
     @GetMapping("/{name}")
     public ResponseEntity<InfluencerDetailDTO> getInfluencerDetail(@PathVariable String name){
         InfluencerDetailDTO dto = influencerService.getInfluencerDetail(name);

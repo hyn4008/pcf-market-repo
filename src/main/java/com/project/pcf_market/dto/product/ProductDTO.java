@@ -16,4 +16,5 @@ public class ProductDTO {
     private BigDecimal originalPrice;
     private BigDecimal currentPrice;
     private BigDecimal rating;
+    private String purchaseUrl;
 }
