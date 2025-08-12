@@ -1,5 +1,6 @@
 package com.project.pcf_market.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -25,6 +26,7 @@ public class Achievement {
 
     private String detail;
 
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "achieved_at", nullable = false)
     private LocalDateTime achievedAt;
 }
