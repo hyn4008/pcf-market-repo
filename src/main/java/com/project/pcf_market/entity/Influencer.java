@@ -42,6 +42,9 @@ public class Influencer {
 
     private String email;
 
+    @Column(name = "is_show")
+    private boolean isShow;
+
     @OneToMany(mappedBy = "influencer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Achievement> achievementList;
 

@@ -14,4 +14,5 @@ public class AdminInfluencerListDTO {
     private Integer subscriber;
     private String youtube;
     private Long productCount; // 관련 상품 개수
+    private Boolean isShow; // 사용자 페이지 노출 여부
 }

@@ -1,5 +1,6 @@
 package com.project.pcf_market.service.admin;
 
+import com.project.pcf_market.dto.admin.influencer.AdminInfluencerDetailDTO;
 import com.project.pcf_market.dto.admin.influencer.AdminInfluencerListDTO;
 import com.project.pcf_market.dto.admin.influencer.CreateInfluencerRequestDTO;
 import com.project.pcf_market.entity.Achievement;
@@ -25,7 +26,17 @@ public class AdminInfluencerService {
     ProductRepository productRepository;
 
     // 인플루언서 목록 조회
-    public List<AdminInfluencerListDTO> getInfluencerList() { return influencerRepository.findAllInfluencersForAdmin(); }
+    public List<AdminInfluencerListDTO> getInfluencerList() {return influencerRepository.findAllInfluencersForAdmin(); }
+
+    // 개별 인플루언서 조회
+    public AdminInfluencerDetailDTO getInfluencerDetail(Long id) {
+        // id를 통해 인플루언서 찾기
+        Influencer influencer = influencerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("influencer not found"));
+
+        // 해당 인플루언서 객체를 통해 dto 생성 후 반환
+        return new AdminInfluencerDetailDTO(influencer);
+    }
 
     // 인플루언서 등록
     public Influencer createInfluencer(CreateInfluencerRequestDTO request) {
@@ -79,5 +90,13 @@ public class AdminInfluencerService {
 
         // 해당 인플루언서의 이력 정보와 관련 제품을 DB에 저장
         return influencerRepository.save(savedInfluencer);
+    }
+
+    // 인플루언서 삭제 (Soft Delete)
+    public void softDeleteInfluencer(Long id) {
+        Influencer influencer = influencerRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Influencer not found"));
+        influencer.setShow(false); // is_show: true -> false
+        influencerRepository.save(influencer);
     }
 }

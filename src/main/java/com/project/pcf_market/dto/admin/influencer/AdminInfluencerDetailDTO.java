@@ -23,6 +23,7 @@ public class AdminInfluencerDetailDTO {
     private String instagram;
     private String blog;
     private String email;
+    private Boolean isShow;
     private List<AdminAchievementDTO> achievementList;
     private List<AdminProductDTO> productList;
 
@@ -38,6 +39,7 @@ public class AdminInfluencerDetailDTO {
         this.instagram = influencer.getInstagram();
         this.blog = influencer.getBlog();
         this.email = influencer.getEmail();
+        this.isShow = influencer.isShow();
         this.achievementList = influencer.getAchievementList().stream()
                 .map(achievement -> new AdminAchievementDTO(achievement))
                 .toList();

@@ -21,15 +21,22 @@ public class AdminInfluencerController {
     public List<AdminInfluencerListDTO> getInfluencerList() { return adminInfluencerService.getInfluencerList(); }
 
     // 개별 인플루언서 조회
+    @GetMapping("/admin/influencer/{id}")
+    public AdminInfluencerDetailDTO getInfluencerDetail(@PathVariable Long id) { return adminInfluencerService.getInfluencerDetail(id); }
 
     // 인플루언서 등록
-    @PostMapping("/admin/influencer/insert")
+    @PostMapping("/admin/influencer")
     public ResponseEntity<AdminInfluencerDetailDTO> createInfluencer(@RequestBody CreateInfluencerRequestDTO request) {
         Influencer createdInfluencer = adminInfluencerService.createInfluencer(request);
         return ResponseEntity.ok(new AdminInfluencerDetailDTO(createdInfluencer));
     }
 
-    // 인플루언서 삭제
+    // 인플루언서 삭제 (Soft Delete)
+    @DeleteMapping("/admin/influencer/{id}")
+    public ResponseEntity<Void> deleteInfluencer(@PathVariable Long id) {
+        adminInfluencerService.softDeleteInfluencer(id);
+        return ResponseEntity.noContent().build();
+    }
 
     // 인플루언서 수정
 }
