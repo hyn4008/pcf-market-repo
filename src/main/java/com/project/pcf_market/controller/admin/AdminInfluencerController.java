@@ -3,6 +3,7 @@ package com.project.pcf_market.controller.admin;
 import com.project.pcf_market.dto.admin.influencer.AdminInfluencerDetailDTO;
 import com.project.pcf_market.dto.admin.influencer.AdminInfluencerListDTO;
 import com.project.pcf_market.dto.admin.influencer.CreateInfluencerRequestDTO;
+import com.project.pcf_market.dto.admin.influencer.UpdateInfluencerRequestDTO;
 import com.project.pcf_market.entity.Influencer;
 import com.project.pcf_market.service.admin.AdminInfluencerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,4 +40,9 @@ public class AdminInfluencerController {
     }
 
     // 인플루언서 수정
+    @PutMapping("/admin/influencer/{id}")
+    public ResponseEntity<AdminInfluencerDetailDTO> updateInfluencer(@RequestBody UpdateInfluencerRequestDTO request, @PathVariable Long id) {
+        Influencer updatedInfluencer = adminInfluencerService.updateInfluencer(id, request);
+        return ResponseEntity.ok(new AdminInfluencerDetailDTO(updatedInfluencer));
+    }
 }
