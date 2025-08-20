@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -22,5 +23,8 @@ public class AdminProductController {
     }
 
     // 개별 상품 조회
-
+    @GetMapping("/admin/product/{id}")
+    public ResponseEntity<AdminProductDTO> getProductDetail(@PathVariable Long id) {
+        return ResponseEntity.ok(adminProductService.getProductDetail(id));
+    }
 }
