@@ -20,11 +20,15 @@ public class AdminInfluencerController {
 
     // 인플루언서 목록 조회
     @GetMapping("/admin/influencer")
-    public List<AdminInfluencerListDTO> getInfluencerList() { return adminInfluencerService.getInfluencerList(); }
+    public ResponseEntity<List<AdminInfluencerListDTO>> getInfluencerList() {
+        return ResponseEntity.ok(adminInfluencerService.getInfluencerList());
+    }
 
     // 개별 인플루언서 조회
     @GetMapping("/admin/influencer/{id}")
-    public AdminInfluencerDetailDTO getInfluencerDetail(@PathVariable Long id) { return adminInfluencerService.getInfluencerDetail(id); }
+    public ResponseEntity<AdminInfluencerDetailDTO> getInfluencerDetail(@PathVariable Long id) {
+        return ResponseEntity.ok(adminInfluencerService.getInfluencerDetail(id));
+    }
 
     // 인플루언서 등록
     @PostMapping("/admin/influencer")

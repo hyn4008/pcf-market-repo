@@ -73,7 +73,7 @@ public class AdminInfluencerService {
         // 이력 정보를 인플루언서 객체에 저장
         savedInfluencer.setAchievementList(achievementList);
 
-        // 저장된 인플루언서의 관련 제품을 저장할 리스트 객체 생성 및 초기화
+        // 저장된 인플루언서의 관련 상품을 저장할 리스트 객체 생성 및 초기화
         List<InfluencerProduct> relationList = request.getProductIdList().stream()
                 .map(productId -> {
                     Product product = productRepository.findById(productId)
@@ -86,10 +86,10 @@ public class AdminInfluencerService {
                 })
                 .collect(Collectors.toList());
 
-        // 관련 제품을 인플루언서 객체에 저장
+        // 관련 상품을 인플루언서 객체에 저장
         savedInfluencer.setRelationList(relationList);
 
-        // 해당 인플루언서의 이력 정보와 관련 제품을 DB에 저장
+        // 해당 인플루언서의 이력 정보와 관련 상품을 DB에 저장
         return influencerRepository.save(savedInfluencer);
     }
 
