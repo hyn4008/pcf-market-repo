@@ -49,4 +49,12 @@ public class AdminProductService {
         // 해당 상품을 DB에 저장한 후 반환
         return productRepository.save(product);
     }
+
+    // 상품 삭제 (Soft Delete)
+    public void softDeleteProduct(Long id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException(("Product not found")));
+        product.setShow(false);
+        productRepository.save(product);
+    }
 }

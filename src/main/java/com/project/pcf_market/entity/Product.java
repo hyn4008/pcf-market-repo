@@ -42,6 +42,9 @@ public class Product {
     @Column(name = "purchase_url", nullable = false)
     private String purchaseUrl;
 
+    @Column(name = "is_show", nullable = false)
+    private boolean isShow;
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<InfluencerProduct> relationList;
 }

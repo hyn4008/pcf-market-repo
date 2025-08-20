@@ -20,6 +20,7 @@ public class AdminProductDTO {
     private BigDecimal currentPrice;
     private BigDecimal rating;
     private String purchaseUrl;
+    private Boolean isShow;
 
     public AdminProductDTO(Product product) {
         this.id = product.getId();
@@ -31,5 +32,6 @@ public class AdminProductDTO {
         this.currentPrice = product.getCurrentPrice();
         this.rating = product.getRating();
         this.purchaseUrl = product.getPurchaseUrl();
+        this.isShow = product.isShow();
     }
 }

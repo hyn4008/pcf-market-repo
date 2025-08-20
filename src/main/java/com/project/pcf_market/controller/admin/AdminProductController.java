@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -40,5 +37,12 @@ public class AdminProductController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(new AdminProductDTO(createdProduct));
+    }
+
+    // 상품 삭제 (Soft Delete)
+    @DeleteMapping("admin/product/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        adminProductService.softDeleteProduct(id);
+        return ResponseEntity.noContent().build();
     }
 }
