@@ -7,6 +7,7 @@ import com.project.pcf_market.dto.admin.influencer.UpdateInfluencerRequestDTO;
 import com.project.pcf_market.entity.Influencer;
 import com.project.pcf_market.service.admin.AdminInfluencerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -29,7 +30,9 @@ public class AdminInfluencerController {
     @PostMapping("/admin/influencer")
     public ResponseEntity<AdminInfluencerDetailDTO> createInfluencer(@RequestBody CreateInfluencerRequestDTO request) {
         Influencer createdInfluencer = adminInfluencerService.createInfluencer(request);
-        return ResponseEntity.ok(new AdminInfluencerDetailDTO(createdInfluencer));
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(new AdminInfluencerDetailDTO(createdInfluencer));
     }
 
     // 인플루언서 삭제 (Soft Delete)
