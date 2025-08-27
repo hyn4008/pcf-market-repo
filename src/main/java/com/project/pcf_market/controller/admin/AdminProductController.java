@@ -2,6 +2,7 @@ package com.project.pcf_market.controller.admin;
 
 import com.project.pcf_market.dto.admin.product.AdminProductDTO;
 import com.project.pcf_market.dto.admin.product.CreateProductRequestDTO;
+import com.project.pcf_market.dto.admin.product.UpdateProductRequestDTO;
 import com.project.pcf_market.entity.Product;
 import com.project.pcf_market.service.admin.AdminProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,12 @@ public class AdminProductController {
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         adminProductService.softDeleteProduct(id);
         return ResponseEntity.noContent().build();
+    }
+
+    // 상품 수정
+    @PutMapping("admin/product/{id}")
+    public ResponseEntity<AdminProductDTO> updateProduct(@PathVariable Long id, @RequestBody UpdateProductRequestDTO request) {
+        Product updatedProduct = adminProductService.updateProduct(id, request);
+        return ResponseEntity.ok(new AdminProductDTO(updatedProduct));
     }
 }

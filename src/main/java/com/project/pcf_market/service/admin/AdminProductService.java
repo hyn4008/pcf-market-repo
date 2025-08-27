@@ -2,6 +2,7 @@ package com.project.pcf_market.service.admin;
 
 import com.project.pcf_market.dto.admin.product.AdminProductDTO;
 import com.project.pcf_market.dto.admin.product.CreateProductRequestDTO;
+import com.project.pcf_market.dto.admin.product.UpdateProductRequestDTO;
 import com.project.pcf_market.entity.Product;
 import com.project.pcf_market.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +57,23 @@ public class AdminProductService {
                 .orElseThrow(() -> new RuntimeException(("Product not found")));
         product.setShow(false);
         productRepository.save(product);
+    }
+
+    // 상품 수정
+    public Product updateProduct(Long id, UpdateProductRequestDTO request) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException(("Product not found")));
+
+        product.setName(request.getName());
+        product.setBrand(request.getBrand());
+        product.setThumbnail(request.getThumbnail());
+        product.setCategory(request.getCategory());
+        product.setOriginalPrice(request.getOriginalPrice());
+        product.setCurrentPrice(request.getCurrentPrice());
+        product.setRating(request.getRating());
+        product.setPurchaseUrl(request.getPurchaseUrl());
+        product.setShow(request.getIsShow());
+
+        return productRepository.save(product);
     }
 }
