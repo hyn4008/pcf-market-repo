@@ -27,7 +27,9 @@ public class AdminInfluencerService {
     ProductRepository productRepository;
 
     // 인플루언서 목록 조회
-    public List<AdminInfluencerListDTO> getInfluencerList() {return influencerRepository.findAllInfluencersForAdmin(); }
+    public List<AdminInfluencerListDTO> getInfluencerList() {
+        return influencerRepository.findAllInfluencersForAdmin();
+    }
 
     // 개별 인플루언서 조회
     public AdminInfluencerDetailDTO getInfluencerDetail(Long id) {
